@@ -1,13 +1,16 @@
 @extends('layouts.admin')
-@section('title','Danh sách sản phẩm')
+@section('title')
+    Danh sách sản phẩm của {{$product['title']}}
+@endsection
 @section('contentHeader')
     <h1>
         Danh Sách
-        <small>Sản Phẩm</small>
+        <small>Sản phẩm {{$product['title']}}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Sản phẩm</li>
+        <li><a href="{{route('product.index')}}"> Sản Phẩm</a></li>
+        <li class="active">Sản phẩm {{$product['title']}}</li>
     </ol>
 @endsection
 @section('content')
@@ -34,49 +37,43 @@
         </script>
     @endif
     <div class="row">
+        <div class="col-xs-3">
+            <a href="{{ route('product_detail.add', $product['id']) }}"><button type="button" class="btn btn-block btn-success">Thêm chi tiết sản phẩm</button></a>
+        </div>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Danh sách sản phẩm</h3>
+                    <h3 class="box-title">Danh sách sản phẩm của {{$product['title']}}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="productTable" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Tên</th>
-                                <th>Đường dẫn</th>
-                                <th>Mô tả</th>
-                                <th>Thương hiệu</th>
-                                <th>Giá</th>
-                                <th>Giá khuyến mãi</th>
-                                <th>Loại</th>
+                                <th>ID</th>
+                                <th>Size</th>
+                                <th>Màu</th>
+                                <th>Số lượng</th>
                                 <th>Ngày tạo</th>
                                 <th>Ngày cập nhật</th>
                                 <th>Chức năng</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($products as $product)
+                            @foreach ($product_details as $product_detail)
                                 <tr>
-                                    <td>{{ $product->title }}</td>
-                                    <td>{{ $product->slug }}</td>
-                                    <td>{!! mb_substr(strip_tags($product->description),0,250) !!}</td>
-                                    <td>{{ $product->trademark }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->promotion_price }}</td>
-                                    <td>{{ $product->productType->title }}</td>
+                                    <td>{{ $product_detail->id }}</td>
+                                    <td>{{ $product_detail->size }}</td>
+                                    <td>{{ $product_detail->color }}</td>
+                                    <td>{{ $product_detail->quantity }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>
                                     <td>
                                         <a href="{{ route('product.show', $product->id) }}">
-                                            <button type="button" class="btn btn-block btn-warning btn-xs"><b>Sửa</b></button>
+                                            <button type="button" class="btn btn-block btn-warning btn-xs">Sửa</button>
                                         </a>
                                         <a href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Bạn có muốn xóa không?')">
-                                            <button type="button" class="btn btn-block btn-danger btn-xs"><b>Xóa</b></button>
-                                        </a>
-                                        <a href="{{ route('product_detail.index', $product->id) }}">
-                                            <button type="button" class="btn btn-block btn-success btn-xs"><b>Chi tiết sản phẩm</b></button>
+                                            <button type="button" class="btn btn-block btn-danger btn-xs">Xóa</button>
                                         </a>
                                     </td>
                                 </tr>
@@ -109,9 +106,9 @@
     <script>
     $(function () {
         $('#productTable').DataTable({
-            "order": [[ 7, "desc" ]],
+            "order": [[ 4, "desc" ]],
             "columnDefs": [{
-                "orderable": false, "targets": 9 
+                "orderable": false, "targets": 6 
             }]
         })
     })

@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->text('title');
             $table->text('slug');
             $table->longText('description');
+            $table->string('trademark');
             $table->bigInteger('price');
             $table->bigInteger('promotion_price')->nullable();
             $table->unsignedInteger('product_type_id');

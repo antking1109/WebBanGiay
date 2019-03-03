@@ -34,7 +34,11 @@ class ProductTypeController extends Controller
         $product_type = new ProductType;
         $product_type->title = $request->txtName;
 
-        // Create a url slug from name of product type
+        /**
+         * Kiểm tra slug nếu đã tồn tại trong csdl giống phần đầu
+         * thì sẽ đếm số bản ghi đó
+         * thêm vào slug đuối "-" cộng thêm số đã đếm được ở trên
+         */
         $slug = Str::slug($request->txtName, '-');
         $slug_count_exist = DB::table('product_types')
                                 ->selectRaw('COUNT(*) as slug_count')
@@ -43,7 +47,7 @@ class ProductTypeController extends Controller
         if ($slug_count_exist == 0) {
             $product_type->slug = $slug;
         } else {
-            $product_type->slug = $slug . "-" . ($slug_count_exist + 1);
+            $product_type->slug = $slug . "-" . $slug_count_exist;
         }
         $product_type->save();
         

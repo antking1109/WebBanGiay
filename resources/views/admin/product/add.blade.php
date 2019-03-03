@@ -48,10 +48,28 @@
                          <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="txtName" value="{{ old('txtName') }}">
                     </div>
                     <div class="form-group">
-                        <textarea id="some-textarea" placeholder="Enter text ..."></textarea>
-                        <script type="text/javascript">
-                            $('#some-textarea').wysihtml5();
-                        </script>
+                        <label>Mô tả sản phẩm</label>
+                        <textarea id="addProduct" name="txtDescription" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('txtDescription')}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Thương hiệu</label>
+                         <input type="text" class="form-control" placeholder="Nhập tên thương hiệu..." name="txtTrademark" value="{{ old('txtTrademark') }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Giá</label>
+                         <input type="text" class="form-control" placeholder="Nhập giá sản phẩm..." name="txtPrice" value="{{ old('txtPrice') }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Giá khuyến mãi: Nhập bằng giá ở trên nếu không có khuyến mãi</label>
+                         <input type="text" class="form-control" placeholder="Nhập giá khuyến mãi sản phẩm..." name="txtPromotionPrice" value="{{ old('txtPromotionPrice') }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Loại sản phẩm</label>
+                        <select class="form-control" name='ddlProductType'>
+                            @foreach($product_types as $product_type)
+                                <option value="{{$product_type->id}}">{{$product_type->title}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Thêm</button>
@@ -64,4 +82,9 @@
 @endsection
 @section('script')
     @parent
+    <script type="text/javascript">
+            $(function () {
+                $('#addProduct').wysihtml5()
+            })
+        </script>
 @endsection

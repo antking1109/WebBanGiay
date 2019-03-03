@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 {
+    /**
+     * ---------------------------USER-------------------------------------------------------
+     */
     // View List User
     Route::get('users.tct', 'UserController@index')->name('user.show');
     // Delete User By ID
@@ -37,7 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
         return view('admin.user.add_user');
     })->name('user.getAddUser');
     Route::post('add-user.tct', 'UserController@addUser')->name('user.addUser');
-
+    /**
+     * ---------------------------PRODUCT TYPE-------------------------------------------------------
+     */
     // View List Product Type
     Route::get('product-types.tct', 'ProductTypeController@index')->name('product_type.show');
     // Add product_type
@@ -51,13 +56,33 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::post('edit-product-type.tct/{id}', 'ProductTypeController@update')->name('product_type.update');
     // Delete product type
     Route::get('delete-product-type.tct/{id}', 'ProductTypeController@destroy')->name('product_type.destroy');
-
+    /**
+     * ---------------------------PRODUCT-------------------------------------------------------
+     */
     // Show all product
     Route::get('products.tct', 'ProductController@index')->name('product.index');
     // Add product
-    Route::get('add-product.tct', function(){
-        // view add page
-        return view('admin.product.add');
-    })->name('product.add');
+    Route::get('add-product.tct', 'ProductController@add')->name('product.add');
     Route::post('add-product.tct', 'ProductController@store')->name('product.store');
+    // Edit product
+    Route::get('edit-product.tct/{id}', 'ProductController@show')->name('product.show');
+    Route::post('edit-product.tct/{id}', 'ProductController@update')->name('product.update');
+    // Delete product
+    Route::get('delete-product.tct/{id}', 'ProductController@destroy')->name('product.destroy');
+    /**
+     * ---------------------------PRODUCT DETAILS-------------------------------------------------------
+     */
+    // Show all product details
+    Route::get('product.tct/{id}', 'ProductDetailController@index')->name('product_detail.index');
+    // Add product detail
+    Route::get('add-product-detail.tct/{id}', function($id){
+        return view('admin.product_detail.add')->with('product_id',$id);
+    })->name('product_detail.add');
+    Route::post('add-product-detail.tct/{id}', 'ProductDetailController@store')->name('product_detail.store');
+    // // Edit product detail
+    // Route::get('edit-product-detail.tct/{id}', 'ProductDetailController@show')->name('product_detail.show');
+    // Route::post('edit-product-detail.tct/{id}', 'ProductDetailController@update')->name('product_detail.update');
+    // // Delete product detail
+    // Route::get('delete-product-detail.tct/{id}', 'ProductDetailController@destroy')->name('product_detail.destroy');
+
 });

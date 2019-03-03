@@ -18,7 +18,6 @@ class CreateProductDetailsTable extends Migration
             $table->integer('size');
             $table->string('color');
             $table->integer('quantity');
-            $table->string('trademark');
             $table->unsignedInteger('product_id');
             $table->foreign('product_id')
                     ->references('id')
