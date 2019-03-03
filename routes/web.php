@@ -53,5 +53,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::get('delete-product-type.tct/{id}', 'ProductTypeController@destroy')->name('product_type.destroy');
 
     // Show all product
-    Route:get('products.tct', 'ProductController@index')->name('product.index');
+    Route::get('products.tct', 'ProductController@index')->name('product.index');
+    // Add product
+    Route::get('add-product.tct', function(){
+        // view add page
+        return view('admin.product.add');
+    })->name('product.add');
+    Route::post('add-product.tct', 'ProductController@store')->name('product.store');
 });
