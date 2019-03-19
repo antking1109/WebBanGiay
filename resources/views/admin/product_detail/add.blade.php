@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ route('product.index') }}"> Sản phẩm</a></li>
-        <li><a href="{{ route('product.index') }}"> Sản phẩm</a></li>
+        <li><a href="{{ route('product_detail.index',$product['id'])}}"> {{$product['title']}}</a></li>
         <li class="active">Thêm chi tiết sản phẩm</li>
     </ol>
 @endsection
@@ -45,32 +45,29 @@
                 <form role="form" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label>Tên sản phẩm</label>
-                         <input type="text" class="form-control" placeholder="Nhập tên sản phẩm..." name="txtName" value="{{ old('txtName') }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Mô tả sản phẩm</label>
-                        <textarea id="addProduct" name="txtDescription" style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('txtDescription')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Thương hiệu</label>
-                         <input type="text" class="form-control" placeholder="Nhập tên thương hiệu..." name="txtTrademark" value="{{ old('txtTrademark') }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Giá</label>
-                         <input type="text" class="form-control" placeholder="Nhập giá sản phẩm..." name="txtPrice" value="{{ old('txtPrice') }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Giá khuyến mãi: Nhập bằng giá ở trên nếu không có khuyến mãi</label>
-                         <input type="text" class="form-control" placeholder="Nhập giá khuyến mãi sản phẩm..." name="txtPromotionPrice" value="{{ old('txtPromotionPrice') }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Loại sản phẩm</label>
-                        <select class="form-control" name='ddlProductType'>
-                            @foreach($product_types as $product_type)
-                                <option value="{{$product_type->id}}">{{$product_type->title}}</option>
-                            @endforeach
+                        <label>Chọn size</label>
+                        <select class="form-control" name="txtSize">
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Màu</label>
+                            <input type="text" class="form-control" placeholder="Nhập màu sắc..." name="txtColor" value="{{ old('txtColor') }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng</label>
+                         <input type="number" class="form-control" placeholder="Số lượng..." name="txtQuantity" value="{{ old('txtQuantity') }}">
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Thêm</button>
@@ -83,9 +80,4 @@
 @endsection
 @section('script')
     @parent
-    <script type="text/javascript">
-            $(function () {
-                $('#addProduct').wysihtml5()
-            })
-        </script>
 @endsection

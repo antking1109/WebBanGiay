@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', function(){
-    return "Trang chủ (Chưa code)";
+    return view('site');
 })->name('index');
 
 Auth::routes(['register' => false]);
@@ -75,14 +75,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     // Show all product details
     Route::get('product.tct/{id}', 'ProductDetailController@index')->name('product_detail.index');
     // Add product detail
-    Route::get('add-product-detail.tct/{id}', function($id){
-        return view('admin.product_detail.add')->with('product_id',$id);
-    })->name('product_detail.add');
+    Route::get('add-product-detail.tct/{id}', 'ProductDetailController@create')->name('product_detail.add');
     Route::post('add-product-detail.tct/{id}', 'ProductDetailController@store')->name('product_detail.store');
-    // // Edit product detail
-    // Route::get('edit-product-detail.tct/{id}', 'ProductDetailController@show')->name('product_detail.show');
-    // Route::post('edit-product-detail.tct/{id}', 'ProductDetailController@update')->name('product_detail.update');
-    // // Delete product detail
-    // Route::get('delete-product-detail.tct/{id}', 'ProductDetailController@destroy')->name('product_detail.destroy');
+    // Edit product detail
+    Route::get('edit-product-detail.tct/{id}', 'ProductDetailController@show')->name('product_detail.show');
+    Route::post('edit-product-detail.tct/{id}', 'ProductDetailController@update')->name('product_detail.update');
+    // Delete product detail
+    Route::get('delete-product-detail.tct/{id}', 'ProductDetailController@destroy')->name('product_detail.destroy');
 
+    /**
+     * ----------------------------PRODUCT IMAGE---------------------------------------------
+     */
+    // Show all product image
 });

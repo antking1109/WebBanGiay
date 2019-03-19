@@ -66,13 +66,13 @@
                                     <td>{{ $product_detail->size }}</td>
                                     <td>{{ $product_detail->color }}</td>
                                     <td>{{ $product_detail->quantity }}</td>
-                                    <td>{{ $product->created_at }}</td>
-                                    <td>{{ $product->updated_at }}</td>
+                                    <td>{{ $product_detail->created_at }}</td>
+                                    <td>{{ $product_detail->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('product.show', $product->id) }}">
+                                        <a href="{{ route('product_detail.show', $product_detail->id) }}">
                                             <button type="button" class="btn btn-block btn-warning btn-xs">Sửa</button>
                                         </a>
-                                        <a href="{{ route('product.destroy', $product->id) }}" onclick="return confirm('Bạn có muốn xóa không?')">
+                                        <a href="{{ route('product_detail.destroy', $product_detail->id) }}" onclick="return confirm('Bạn có muốn xóa không?')">
                                             <button type="button" class="btn btn-block btn-danger btn-xs">Xóa</button>
                                         </a>
                                     </td>

@@ -104,7 +104,7 @@ class ProductController extends Controller
     /**
      * @desc: Delete single product
      * @param: $id Product ID
-     * @return: \Illiminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse : \Illiminate\Http\Response
      */
     public function destroy($id)
     {
