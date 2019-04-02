@@ -78,6 +78,9 @@
                                         <a href="{{ route('product_detail.index', $product->id) }}">
                                             <button type="button" class="btn btn-block btn-success btn-xs"><b>Chi tiết sản phẩm</b></button>
                                         </a>
+                                        <a href="{{ route('product_image.index', $product->id) }}">
+                                            <button type="button" class="btn btn-block btn-success btn-xs"><b>Quản lý ảnh</b></button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

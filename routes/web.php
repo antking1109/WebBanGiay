@@ -87,4 +87,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
      * ----------------------------PRODUCT IMAGE---------------------------------------------
      */
     // Show all product image
+    Route::get('product-image.tct/{id}', 'ProductImage@index')->name('product_image.index');
+    // Add product image
+    Route::get('add-product-image.tct/{id}', 'ProductImage@create')->name('product_image.add');
+    Route::post('add-product-image.tct/{id}', 'ProductImage@store')->name('product_image.store');
 });

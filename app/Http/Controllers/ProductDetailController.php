@@ -18,7 +18,6 @@ class ProductDetailController extends Controller
     {
         $product = Product::findOrFail($id);
         $product_details = $product['productDetails'];
-        
         return view('admin.product_detail.list')->with(['product_details'=>$product_details,'product'=>$product]);
     }
 
