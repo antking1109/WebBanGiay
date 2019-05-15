@@ -65,12 +65,12 @@
                                 <td>{{ $product_image->alt }}</td>
                                 <td><img src="{{URL::asset($product_image->slug)}}" width="250px" height="150px"/></td>
                                 <td>
-                                    <a href="{{ route('product_detail.show', $product_detail->id) }}">
-                                        <button type="button" class="btn btn-block btn-warning btn-xs">Sửa</button>
-                                    </a>
-                                    <a href="{{ route('product_detail.destroy', $product_detail->id) }}" onclick="return confirm('Bạn có muốn xóa không?')">
-                                        <button type="button" class="btn btn-block btn-danger btn-xs">Xóa</button>
-                                    </a>
+{{--                                    <a href="{{ route('product_detail.show', $product_detail->id) }}">--}}
+{{--                                        <button type="button" class="btn btn-block btn-warning btn-xs">Sửa</button>--}}
+{{--                                    </a>--}}
+{{--                                    <a href="{{ route('product_detail.destroy', $product_detail->id) }}" onclick="return confirm('Bạn có muốn xóa không?')">--}}
+{{--                                        <button type="button" class="btn btn-block btn-danger btn-xs">Xóa</button>--}}
+{{--                                    </a>--}}
                                 </td>
                             </tr>
                         @endforeach

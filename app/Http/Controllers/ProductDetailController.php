@@ -41,12 +41,14 @@ class ProductDetailController extends Controller
      */
     public function store(AddProductDetailRequest $request, $id)
     {
+        $product = Product::findOrFail($id);
         $product_detail = new ProductDetail;
         $product_detail->size = $request->txtSize;
         $product_detail->color = $request->txtColor;
         $product_detail->quantity = $request->txtQuantity;
-        $product_detail->product_id = $id;
+        $product_detail->product_id = $product->id;
         $product_detail->save();
+
         return redirect()->route('product_detail.index', $id)->with('add-success', 'Bạn đã thêm thành công');
     }
 
