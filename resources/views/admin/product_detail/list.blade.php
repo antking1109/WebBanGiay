@@ -44,6 +44,13 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Danh sách sản phẩm của {{$product['title']}}</h3>
+                    <hr>
+                    <div>
+                        @foreach($product->images->all() as $product_image)
+                            <img src="{{ $product_image['slug']}}" width="250px" title="{{ $product_image['title']}}" alt="{{ $product_image['alt']}}"/>
+                        @endforeach
+                    </div>
+                    <hr>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">

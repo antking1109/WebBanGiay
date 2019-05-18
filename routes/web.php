@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 {
     /**
-     * ---------------------------USER-------------------------------------------------------
+     * ---------------------------USER---------------------------------------------------------------
      */
     // View List User
     Route::get('users.tct', 'UserController@index')->name('user.show');
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     })->name('user.getAddUser');
     Route::post('add-user.tct', 'UserController@addUser')->name('user.addUser');
     /**
-     * ---------------------------PRODUCT TYPE-------------------------------------------------------
+     * ---------------------------PRODUCT TYPE---------------------------------------------------------
      */
     // View List Product Type
     Route::get('product-types.tct', 'ProductTypeController@index')->name('product_type.show');
@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     // Delete product type
     Route::get('delete-product-type.tct/{id}', 'ProductTypeController@destroy')->name('product_type.destroy');
     /**
-     * ---------------------------PRODUCT-------------------------------------------------------
+     * ---------------------------PRODUCT---------------------------------------------------------------
      */
     // Show all product
     Route::get('products.tct', 'ProductController@index')->name('product.index');
@@ -84,11 +84,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::get('delete-product-detail.tct/{id}', 'ProductDetailController@destroy')->name('product_detail.destroy');
 
     /**
-     * ----------------------------PRODUCT IMAGE---------------------------------------------
+     * ----------------------------PRODUCT IMAGE--------------------------------------------------------
      */
     // Show all product image
-    Route::get('product-image.tct/{id}', 'ProductImage@index')->name('product_image.index');
+    Route::get('product-image.tct/{id}', 'ProductImageController@index')->name('product_image.index');
     // Add product image
-    Route::get('add-product-image.tct/{id}', 'ProductImage@create')->name('product_image.add');
-    Route::post('add-product-image.tct/{id}', 'ProductImage@store')->name('product_image.store');
+    Route::get('add-product-image.tct/{id}', 'ProductImageController@create')->name('product_image.add');
+    Route::post('add-product-image.tct/{id}', 'ProductImageController@store')->name('product_image.store');
+    // Edit product detail
+    Route::get('edit-product-image.tct/{id}', 'ProductImageController@show')->name('product_image.show');
+    Route::post('edit-product-image.tct/{id}', 'ProductImageController@update')->name('product_image.update');
+    // Delete product detail
+    Route::get('delete-product-image.tct/{id}', 'ProductImageController@destroy')->name('product_image.destroy');
 });

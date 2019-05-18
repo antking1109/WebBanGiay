@@ -45,7 +45,7 @@
                         <thead>
                             <tr>
                                 <th>Tên</th>
-                                <th>Đường dẫn</th>
+                                <th>Ảnh</th>
                                 <th>Mô tả</th>
                                 <th>Thương hiệu</th>
                                 <th>Giá</th>
@@ -60,7 +60,7 @@
                             @foreach ($products as $product)
                                 <tr>
                                     <td>{{ $product->title }}</td>
-                                    <td>{{ $product->slug }}</td>
+                                    <td><img src="{{ $product->images->first()['slug']}}" width="150px" title="{{ $product->images->first()['title']}}" alt="{{ $product->images->first()['alt']}}"/> </td>
                                     <td>{!! mb_substr(strip_tags($product->description),0,250) !!}</td>
                                     <td>{{ $product->trademark }}</td>
                                     <td>{{ $product->price }}</td>
