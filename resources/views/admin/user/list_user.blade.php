@@ -34,6 +34,9 @@
         </script>
     @endif
     <div class="row">
+        <div class="col-xs-3">
+            <a href="{{ route('user.getAddUser') }}"><button type="button" class="btn btn-block btn-success">Thêm người dùng</button></a>
+        </div>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">

@@ -33,6 +33,9 @@
         </script>
     <?php endif; ?>
     <div class="row">
+        <div class="col-xs-3">
+            <a href="<?php echo e(route('product_type.create')); ?>"><button type="button" class="btn btn-block btn-success">Thêm sản phẩm</button></a>
+        </div>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">

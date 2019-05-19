@@ -33,6 +33,9 @@
         </script>
     <?php endif; ?>
     <div class="row">
+        <div class="col-xs-3">
+            <a href="<?php echo e(route('user.getAddUser')); ?>"><button type="button" class="btn btn-block btn-success">Thêm người dùng</button></a>
+        </div>
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -101,4 +104,5 @@
     })
     </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
