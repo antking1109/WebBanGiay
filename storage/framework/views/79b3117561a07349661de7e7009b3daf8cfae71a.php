@@ -40,11 +40,17 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-body">
-                <form role="form" method="POST">
+                <form role="form" method="POST" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label>Tên loại sản phẩm</label>
                          <input type="text" class="form-control" placeholder="Nhập tên loại sản phẩm..." name="txtName" value="<?php echo e(old('txtName')); ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Chọn ảnh mô tả</label>
+                        <input type="file" id="fileImage" name="fileImage">
+
+                        <p class="help-block">Vui lòng chọn file là hình ảnh.</p>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Thêm</button>
@@ -58,4 +64,5 @@
 <?php $__env->startSection('script'); ?>
     ##parent-placeholder-cb5346a081dcf654061b7f897ea14d9b43140712##
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

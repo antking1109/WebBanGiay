@@ -35,7 +35,7 @@
     @endif
     <div class="row">
         <div class="col-xs-3">
-            <a href="{{ route('product.add') }}"><button type="button" class="btn btn-block btn-success">Thêm loại sản phẩm</button></a>
+            <a href="{{ route('product_type.create') }}"><button type="button" class="btn btn-block btn-success">Thêm loại sản phẩm</button></a>
         </div>
         <div class="col-xs-12">
             <div class="box">
@@ -49,6 +49,7 @@
                             <tr>
                                 <th>Tên</th>
                                 <th>Đường dẫn</th>
+                                <th>Ảnh mô tả</th>
                                 <th>Ngày tạo</th>
                                 <th>Chức năng</th>
                             </tr>
@@ -58,6 +59,7 @@
                                 <tr>
                                     <td>{{ $product_type->title }}</td>
                                     <td>{{ $product_type->slug }}</td>
+                                    <td><img src="{{$product_type['slug_image']}}" width="150px"/></td>
                                     <td>{{ $product_type->created_at }}</td>
                                     <td>
                                         <a href="{{ route('product_type.edit', $product_type->id) }}">
@@ -97,9 +99,9 @@
     <script>
     $(function () {
         $('#productTypeTable').DataTable({
-            "order": [[ 2, "desc" ]],
+            "order": [[ 3, "desc" ]],
             "columnDefs": [{
-                "orderable": false, "targets": 3 
+                "orderable": false, "targets": 4
             }]
         })
     })

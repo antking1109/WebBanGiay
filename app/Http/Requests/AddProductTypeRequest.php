@@ -24,7 +24,8 @@ class AddProductTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtName'   =>  'required'
+            'txtName'   =>  'required',
+            'fileImage' =>  'image'
         ];
     }
 
@@ -35,6 +36,7 @@ class AddProductTypeRequest extends FormRequest
     {
         return [
             'txtName.required'  =>  'Tên không được để trống',
+            'fileImage.image'    =>  'Vui lòng chọn file là hình ảnh'
         ];
     }
 }

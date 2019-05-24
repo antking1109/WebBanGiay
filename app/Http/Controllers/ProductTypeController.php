@@ -49,6 +49,17 @@ class ProductTypeController extends Controller
         } else {
             $product_type->slug = $slug . "-" . $slug_count_exist;
         }
+
+        //Lấy đuôi file
+        $fileExtension = $request->fileImage->getClientOriginalExtension();
+        // Filename cực shock để khỏi bị trùng
+        $fileName = time() . "_" . rand(0,9999999) . "_" . md5(rand(0,9999999)) . "." . $fileExtension;
+        // Thư mục upload
+        $uploadPath = public_path('/upload');
+        // Bắt đầu chuyển file vào thư mục
+        $request->fileImage->move($uploadPath, $fileName);
+
+        $product_type->slug_image = '/upload/' . $fileName;
         $product_type->save();
         
         return redirect()->route('product_type.show')->with('add-success', 'Bạn đã thêm thành công');
@@ -76,6 +87,18 @@ class ProductTypeController extends Controller
         $product_type = ProductType::findOrFail($id);
         $product_type->title = $request->txtName;
         $product_type->slug  = $request->txtSlug;
+        if($request->fileImage){
+            //Lấy đuôi file
+            $fileExtension = $request->fileImage->getClientOriginalExtension();
+            // Filename cực shock để khỏi bị trùng
+            $fileName = time() . "_" . rand(0,9999999) . "_" . md5(rand(0,9999999)) . "." . $fileExtension;
+            // Thư mục upload
+            $uploadPath = public_path('/upload');
+            // Bắt đầu chuyển file vào thư mục
+            $request->fileImage->move($uploadPath, $fileName);
+
+            $product_type->slug_image = '/upload/' . $fileName;
+        }
         $product_type->save();
         
         return back()->withInput()->with('success','Sửa thành công!');

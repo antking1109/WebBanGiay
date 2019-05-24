@@ -41,11 +41,17 @@
         <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-body">
-                <form role="form" method="POST">
+                <form role="form" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Tên loại sản phẩm</label>
                          <input type="text" class="form-control" placeholder="Nhập tên loại sản phẩm..." name="txtName" value="{{ old('txtName') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Chọn ảnh mô tả</label>
+                        <input type="file" id="fileImage" name="fileImage">
+
+                        <p class="help-block">Vui lòng chọn file là hình ảnh.</p>
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Thêm</button>

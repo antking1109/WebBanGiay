@@ -10,9 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
-    return view('site');
-})->name('index');
 
 Auth::routes(['register' => false]);
 
@@ -25,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 {
     /**
-     * ---------------------------USER---------------------------------------------------------------
+     * ---------------------------USER----------------------------------------------------------------------------------
      */
     // View List User
     Route::get('users.tct', 'UserController@index')->name('user.show');
@@ -41,7 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     })->name('user.getAddUser');
     Route::post('add-user.tct', 'UserController@addUser')->name('user.addUser');
     /**
-     * ---------------------------PRODUCT TYPE---------------------------------------------------------
+     * ---------------------------PRODUCT TYPE--------------------------------------------------------------------------
      */
     // View List Product Type
     Route::get('product-types.tct', 'ProductTypeController@index')->name('product_type.show');
@@ -57,7 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     // Delete product type
     Route::get('delete-product-type.tct/{id}', 'ProductTypeController@destroy')->name('product_type.destroy');
     /**
-     * ---------------------------PRODUCT---------------------------------------------------------------
+     * ---------------------------PRODUCT-------------------------------------------------------------------------------
      */
     // Show all product
     Route::get('products.tct', 'ProductController@index')->name('product.index');
@@ -70,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     // Delete product
     Route::get('delete-product.tct/{id}', 'ProductController@destroy')->name('product.destroy');
     /**
-     * ---------------------------PRODUCT DETAILS-------------------------------------------------------
+     * ---------------------------PRODUCT DETAILS-----------------------------------------------------------------------
      */
     // Show all product details
     Route::get('product.tct/{id}', 'ProductDetailController@index')->name('product_detail.index');
@@ -84,7 +81,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::get('delete-product-detail.tct/{id}', 'ProductDetailController@destroy')->name('product_detail.destroy');
 
     /**
-     * ----------------------------PRODUCT IMAGE--------------------------------------------------------
+     * ----------------------------PRODUCT IMAGE------------------------------------------------------------------------
      */
     // Show all product image
     Route::get('product-image.tct/{id}', 'ProductImageController@index')->name('product_image.index');
@@ -97,3 +94,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     // Delete product detail
     Route::get('delete-product-image.tct/{id}', 'ProductImageController@destroy')->name('product_image.destroy');
 });
+
+/**
+ * --------------------------------HOME PAGE----------------------------------------------------------------------------
+ */
+// Show all product to homepage
+Route::get('/', 'HomePageController@index')->name('home_page');
+
