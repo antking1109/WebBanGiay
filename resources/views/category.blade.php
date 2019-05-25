@@ -1,5 +1,5 @@
 @extends('layouts.site')
-@section('title','TruongStore - Website Bán Giày Online')
+@section('title',$category['title'])
 @section('sale')
     <div class="sale">
         <div class="container">
@@ -24,38 +24,17 @@
         </div>
     </div>
 @endsection
-@section('show-categories')
-    <div class="colorlib-product">
-        <div class="container-fluid">
-            @foreach($categories as $cat)
-                @if($loop->index % 2 == 0)
-                    <div class="row">
-                @endif
-                    <div class="col-sm-6 text-center">
-                        <div class="featured">
-                            <a href="{{route('category',$cat['slug'])}}" class="featured-img" style="background-image: url({{$cat['slug_image']}});"></a>
-                            <div class="desc">
-                                <h2><a href="{{route('category',$cat['slug'])}}">{{$cat['title']}}</a></h2>
-                            </div>
-                        </div>
-                    </div>
-                @if(($loop->index % 2 != 0) || ($loop->index == (count($categories) - 1)))
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-@endsection
+@section('show-categories',"")
 @section('all-product')
     <div class="colorlib-product">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
-                    <h2>Tất cả sản phẩm </h2>
+                    <h2>Tất cả sản phẩm {{$category['title']}}</h2>
                 </div>
             </div>
             <div class="row row-pb-md">
-                @foreach($products as $product)
+                @foreach($category->products()->paginate(12) as $product)
                     <div class="col-lg-3 mb-4 text-center">
                         <div class="product-entry border">
                             <a href="#" class="prod-img">
@@ -78,7 +57,7 @@
                     @endif
                 @endforeach
                 <div class="w-100"></div>
-                {{$products->links('vendor.pagination.default')}}
+                {{$category->products()->paginate(12)->links('vendor.pagination.default')}}
             </div>
         </div>
     </div>

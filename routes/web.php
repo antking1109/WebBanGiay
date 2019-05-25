@@ -96,8 +96,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 });
 
 /**
- * --------------------------------HOME PAGE----------------------------------------------------------------------------
+ * --------------------------------CLIENT----------------------------------------------------------------------------
  */
 // Show all product to homepage
 Route::get('/', 'HomePageController@index')->name('home_page');
+//Display products by category
+Route::get('{slug}','HomePageController@showProductsByCategory')->name('category');
 
