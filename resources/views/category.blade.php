@@ -37,11 +37,11 @@
                 @foreach($category->products()->paginate(12) as $product)
                     <div class="col-lg-3 mb-4 text-center">
                         <div class="product-entry border">
-                            <a href="#" class="prod-img">
+                            <a href="{{route('product',$product['slug'])}}" class="prod-img">
                                 <img src="{{$product->images->first()['slug']}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
                             </a>
                             <div class="desc">
-                                <h2><a href="#">{{$product['title']}}</a></h2>
+                                <h2><a href="{{route('product',$product['slug'])}}">{{$product['title']}}</a></h2>
                                 @if($product['price'] != $product['promotion_price'])
                                     <span class="price"><b>{{$product['promotion_price']}} VNĐ</b></span>
                                     <span class="price"><strike>{{$product['price']}} VNĐ</strike></span>

@@ -73,9 +73,9 @@
 			<?php echo $__env->yieldContent('sale'); ?>
 		</nav>
 
-        <?php echo $__env->yieldContent('show-categories'); ?>
-        <?php echo $__env->yieldContent('all-product'); ?>
-
+        <?php echo $__env->yieldContent('show-categories',""); ?>
+        <?php echo $__env->yieldContent('all-product',""); ?>
+        <?php echo $__env->yieldContent('product-detail',""); ?>
 		<div class="colorlib-partner">
 			<div class="container">
 				<div class="row">
@@ -207,7 +207,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="<?php echo e(URL::asset('src_site/js/jquery.stellar.min.js')); ?>"></script>
 	<!-- Main -->
 	<script src="<?php echo e(URL::asset('src_site/js/main.js')); ?>"></script>
-
+    <?php echo $__env->yieldContent('js',""); ?>
 	</body>
 </html>
 

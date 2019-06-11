@@ -73,9 +73,9 @@
 			@yield('sale')
 		</nav>
 
-        @yield('show-categories')
-        @yield('all-product')
-
+        @yield('show-categories',"")
+        @yield('all-product',"")
+        @yield('product-detail',"")
 		<div class="colorlib-partner">
 			<div class="container">
 				<div class="row">
@@ -207,7 +207,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{URL::asset('src_site/js/jquery.stellar.min.js')}}"></script>
 	<!-- Main -->
 	<script src="{{URL::asset('src_site/js/main.js')}}"></script>
-
+    @yield('js',"")
 	</body>
 </html>
 

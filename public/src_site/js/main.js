@@ -227,15 +227,17 @@
 	// Owl Carousel
 	var owlCrouselFeatureSlide = function() {
 		var owl = $('.owl-carousel');
+        var amountHeaderImages = owl.find('img').length;
 		owl.owlCarousel({
 		   animateOut: 'fadeOut',
 		   animateIn: 'fadeIn',
 		   autoplay: false,
 		   autoplayHoverPause: true,
-		   loop:true,
+		   loop: amountHeaderImages > 1,
 		   margin:0,
-		   nav:false,
-		   dots: true,
+		   nav:amountHeaderImages > 1,
+           singleItem:true,
+		   dots: amountHeaderImages > 1,
 		   autoHeight: false,
 		   items: 1,
 		   navText: [
@@ -249,6 +251,7 @@
 			animateOut: 'fadeOut',
 		   animateIn: 'fadeIn',
 		   autoplay: true,
+            singleItem:true,
 		   autoplayHoverPause: true,
 		   loop:true,
 		   margin:0,

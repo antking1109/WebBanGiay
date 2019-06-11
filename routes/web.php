@@ -100,6 +100,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
  */
 // Show all product to homepage
 Route::get('/', 'HomePageController@index')->name('home_page');
-//Display products by category
+// Display products by category
 Route::get('{slug}','HomePageController@showProductsByCategory')->name('category');
+// View info product
+Route::get('product/{slug}', 'HomePageController@showProduct')->name('product');
 
